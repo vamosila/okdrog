@@ -21,14 +21,36 @@ import javax.swing.table.DefaultTableModel;
 import lan.zold.models.Product;
 
 public class MainFrame extends JFrame {
+
     DefaultTableModel model;
-    public DefaultTableModel getModel() {
-        return model;
-    }
-    public void setModel(DefaultTableModel model) {
-        this.model = model;
-    }
+    JScrollPane pane;
+    JTable table;
+    ArrayList<Product> productList;
+
     public MainFrame() {
+        initComponent();
+    }
+
+    private void initComponent() {
+        instanceVisualComponent();
+        initTableComponent();
+        initFrame();
+    }
+
+    private void initFrame() {
+        this.add(pane);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(400, 300);
+        this.setVisible(true);
+    }
+
+    private void instanceVisualComponent() {
+        model = new DefaultTableModel();
+        table = new JTable();
+        pane = new JScrollPane(table);
+    }
+
+    private void initTableComponent() {
         String[] columNames = {
             "Azonosító",
             "Név",
@@ -37,19 +59,15 @@ public class MainFrame extends JFrame {
             "Darab"
         };
 
-        model = new DefaultTableModel();
-        table = new JTable();
-        pane = new JScrollPane(table);
-
         this.model.setColumnIdentifiers(columNames);
         table.setModel(model);
-
-        this.add(pane);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400, 300);
-        this.setVisible(true);
     }
-    JScrollPane pane;
-    JTable table;
-    ArrayList<Product> productList;
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
+    }
 }
