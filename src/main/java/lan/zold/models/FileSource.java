@@ -5,6 +5,7 @@
 * Group: Szoft V
 * Date: 2023-12-03
 * Github: https://github.com/oktatas/
+* Refaktorálva: Vámosi László Ádám, 2026-02-10
 * Licenc: GNU GPL
 */
 
