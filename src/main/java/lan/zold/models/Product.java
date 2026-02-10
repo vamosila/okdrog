@@ -13,10 +13,11 @@ package lan.zold.models;
 
 public class Product {
     Integer id;
-    public String name;
+    String name;
     String articleNumber;
     Double unitPrice;
     Integer piece;
+    
     public Product(Integer id, String name, String articleNumber, Double unitPrice, Integer piece) {
         this.id = id;
         this.name = name;
