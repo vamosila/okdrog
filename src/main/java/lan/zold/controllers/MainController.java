@@ -19,15 +19,28 @@ import lan.zold.models.Product;
 import lan.zold.views.MainFrame;
 
 public class MainController {
-    // Az a objektum a MainFrame egy példánya
-    MainFrame a;
+
+    MainFrame mainFrame;
+    ArrayList<Product> productList;
+
     public MainController() {
-        this.a = new MainFrame();
-        ArrayList<Product> productList = new FileSource().readFile();
+        initComponents();
+    }
+
+    public void initComponents() {
+        this.mainFrame = new MainFrame();
+        productList = new FileSource().readFile();
+        printProductName();
+        initTable();
+    }
+
+    private void printProductName() {
         for(Product prod : productList) {
             System.out.println(prod.getName());
         }
+    }
 
+    private void initTable() {
         for(Product prod:productList) {
             Vector<String> row = new Vector<>();
             row.add(prod.getId().toString());
@@ -35,9 +48,7 @@ public class MainController {
             row.add(prod.getArticleNumber());
             row.add(prod.getUnitPrice().toString());
             row.add(prod.getPiece().toString());
-            this.a.getModel().addRow(row);
+            this.mainFrame.getModel().addRow(row);
         }
-
-
     }
 }
